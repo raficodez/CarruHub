@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "development") {
         if (owner.length > 0) {
             return res.status(503).send("You don't have to permission to create a new owner.")
         }
-        let {  fullname, email, password} = req.body;
+        let { fullname, email, password } = req.body;
 
         let createdOwner = await ownerModel.create({
             fullname,
@@ -19,8 +19,9 @@ if (process.env.NODE_ENV === "development") {
     })
 };
 
-router.get('/', function (req, res) {
-    res.send("hey its working , owners")
+router.get('/admin', function (req, res) {
+    let success = req.flash("sucess")
+    res.render("createproducts", { success })
 })
 
 
